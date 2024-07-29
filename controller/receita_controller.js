@@ -8,8 +8,8 @@ exports.listar = (req, res) => {
 };
 
 exports.inserir = (req, res) => {
-  const { nome, ingredientes, instrucoes } = req.body;
-  const novaReceita = { id: nextId++, nome, ingredientes, instrucoes }; // Criando o objeto diretamente
+  const { nome, ingredientes, tempoPreparo } = req.body;
+  const novaReceita = { id: nextId++, nome, ingredientes, tempoPreparo }; // Incluindo tempoPreparo
   receitas.push(novaReceita);
   res.status(201).json(novaReceita);
 };
@@ -26,12 +26,12 @@ exports.buscarPorId = (req, res) => {
 
 exports.atualizar = (req, res) => {
   const { id } = req.params;
-  const { nome, ingredientes, instrucoes } = req.body;
+  const { nome, ingredientes, tempoPreparo } = req.body;
   const receita = receitas.find(r => r.id === parseInt(id));
   if (receita) {
     receita.nome = nome;
     receita.ingredientes = ingredientes;
-    receita.instrucoes = instrucoes;
+    receita.tempoPreparo = tempoPreparo; // Atualizando tempoPreparo
     res.json(receita);
   } else {
     res.status(404).send('Receita não encontrada');

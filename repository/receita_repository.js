@@ -6,14 +6,14 @@ let listaReceitas = [
         nome: "Bolo de Cenoura",
         categoria: "sobremesa",
         ingredientes: ["cenoura", "farinha", "açúcar", "ovos"],
-        modoPreparo: "Misture os ingredientes e asse por 30 minutos."
+        tempoPreparo: "45 min"
     },
     {
         id: 2,
         nome: "Torta de Limão",
         categoria: "prato principal",
         ingredientes: ["feijão", "carne de porco", "linguiça", "temperos"],
-        modoPreparo: "Cozinhe os ingredientes por várias horas."
+        tempoPreparo: "30 min"
     }
 ];
 
@@ -33,6 +33,7 @@ function buscarPorId(id) {
             return receita;
         }
     }
+    return null; // Retorna null se não encontrar a receita
 }
 
 function atualizar(id, receitaAlterada) {
@@ -41,9 +42,10 @@ function atualizar(id, receitaAlterada) {
         receita.nome = receitaAlterada.nome;
         receita.categoria = receitaAlterada.categoria;
         receita.ingredientes = receitaAlterada.ingredientes;
-        receita.modoPreparo = receitaAlterada.modoPreparo;
+        receita.tempoPreparo = receitaAlterada.tempoPreparo;
+        return receita;
     }
-    return receita;
+    return null;
 }
 
 function deletar(id) {
